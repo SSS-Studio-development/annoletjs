@@ -222,7 +222,7 @@ function anno_rtag(xpath)
         if(typeof language_trans !== "default_value")
         {
           console.log("text changing");
-          $j(anno_getElementByXpath(xpath)).text(rtag_text);
+          $j(anno_getElementByXpath(xpath)).wrapInner(rtag_text);
           rtag_text = "default_value";
           window.clearInterval(timer);
         }
