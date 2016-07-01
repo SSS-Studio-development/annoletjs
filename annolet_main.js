@@ -248,7 +248,7 @@ function annolet_main() {
         }
 
     };
-  document.mouseUp() = function(event)
+  document.mouseup = function(event)
   {
     console.log("up event triggered");
     var target = 'target' in event ? event.target : event.srcElement; // for IE
