@@ -257,7 +257,7 @@ function annolet_main() {
       console.log("function getting called");
       anno_rtag(xpath);
     }
-  }
+  };
 }
 
 // funtion to disable all links
