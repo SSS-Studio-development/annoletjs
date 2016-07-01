@@ -230,7 +230,29 @@ var span = document.createElement("span");
 function annolet_main() {
     disableAllLinks()  // it will disable all the links present in webpage iteratively
     annolet_createContainer();
-    
+    document.onclick = function(event) {
+        if (event === undefined) {
+            event = window.event;
+        } // for IE
+        var target = 'target' in event ? event.target : event.srcElement; // for IE
+        var root = document.compatMode === 'CSS1Compat' ? document.documentElement : document.body;
+        var xpath = anno_getXpathTo(target);
+        if (annolet_btn === 1) {
+            anno_highlight(xpath);
+        }
+        if(annolet_btn === 4){
+          anno_language(xpath);
+        }
+        else if (annolet_btn == 3){
+          anno_phonetic(xpath);
+        }
+        else if (annolet_btn===6){
+          var xpath = anno_getXpathTo(target);
+          console.log("function getting called");
+          anno_rtag(xpath);
+        }
+
+    };
   document.mouseup = function(event)
   {
     console.log("up event triggered");
