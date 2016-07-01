@@ -207,38 +207,19 @@ function anno_rtag(xpath)
 {
   clicked_element = anno_getElementByXpath(xpath);
   //if element is already highlighted
-  if (clicked_element.id == "mark" || clicked_element.id == "annolet") {
-      console.log('not permitted');
-  }
-  else {
-  //if element is already translated
-  if (anno_getElementByXpath(xpath).id != "language" || !(anno_getElementByXpath(xpath).id)) {
-    var text_to_translate = $j(anno_getElementByXpath(xpath)).html();
-    get_rtag(text_to_translate);
-    var timer = window.setInterval
-    (
-      function ()
-      {
-        if(typeof language_trans !== "default_value")
-        {
-          console.log("text changing");
-          $j(anno_getElementByXpath(xpath)).wrapInner(rtag_text);
-          rtag_text = "default_value";
-          window.clearInterval(timer);
+var span = document.createElement("span");
+    span.style.fontWeight = "bold";
+    span.style.color = "green";
+    span.property = "date";
+    if (window.getSelection) {
+        var sel = window.getSelection();
+        if (sel.rangeCount) {
+            var range = sel.getRangeAt(0).cloneRange();
+            range.surroundContents(span);
+            sel.removeAllRanges();
+            sel.addRange(range);
         }
-        else
-        {
-          console.log("returned without change");
-        }
-      }
-      ,1000
-    );
-  }
-  else {
-        console.log('already translated');
-    }
-  }
-  
+    }  
 }
 
 //------------------------------------------------------------------------
@@ -265,10 +246,16 @@ function annolet_main() {
         else if (annolet_btn == 3){
           anno_phonetic(xpath);
         }
-      else if (annolet_btn == 6){
-        anno_rtag(xpath);
-      }
+
     };
+  document.mouseup() = function(event)
+  {
+    var target = 'target' in event ? event.target : event.srcElement; // for IE
+    if (annolet_btn===6){
+      var xpath = anno_getXpathTo(target);
+      anno_rtag(xpath);
+    }
+  }
 }
 
 // funtion to disable all links
