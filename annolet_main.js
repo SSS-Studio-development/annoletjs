@@ -27,6 +27,7 @@ function annolet_createContainer() {
     /*"<li id='annolet' class=annolet-tools-menu-item id=highlight-btn onclick='annolet_btn=2;'>Highlight</li>"+*/
     "<li id='annolet' class=annolet-tools-menu-item id=highlight-btn onclick='annolet_btn=3;'>Phonetics</li>"+
     "<li id='annolet' class=annolet-tools-menu-item id=highlight-btn onclick='annolet_btn=4;'>Translation</li>"+
+    "<li id='annolet' class=annolet-tools-menu-item id=highlight-btn onclick='annolet_btn=6;'>rtag</li>"+
     "<li id='annolet' class=annolet-tools-menu-item id=exit-btn onclick='annolet_btn=0;'>exit</li>"+
     "</ul>"; //HTML to create a list of options
 }
@@ -61,6 +62,7 @@ function anno_getElementByXpath(xpath) {
 
 var phonetic_trans = "default_value";
 var language_trans = "default_value";
+var rtag_text = "default value";
 
 function get_phonetics(str){
 
@@ -105,6 +107,26 @@ function get_languagetrans(str,fr,to){
 
 }
 
+function get_rtag(str)
+{
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "//localhost:5000/rtag", true); // replace localhost afterwards
+  xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+  xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+  xhr.send(JSON.stringify({"sentence":str}));
+
+  xhr.onreadystatechange = processRequest;
+
+  function processRequest(e)
+  {
+    if (xhr.readyState == 4)
+    {
+      console.log('r tag set');
+      rtag_text = xhr.responseText;
+    }
+  }
+  
+}
 
 
 //function for getting phonetic
@@ -181,6 +203,44 @@ function anno_language(xpath) {
   }
 }
 
+function anno_rtag(xpath)
+{
+  clicked_element = anno_getElementByXpath(xpath);
+  //if element is already highlighted
+  if (clicked_element.id == "mark" || clicked_element.id == "annolet") {
+      console.log('not permitted');
+  }
+  else {
+  //if element is already translated
+  if (anno_getElementByXpath(xpath).id != "language" || !(anno_getElementByXpath(xpath).id)) {
+    var text_to_translate = $j(anno_getElementByXpath(xpath)).html();
+    get_rtag(text_to_translate);
+    var timer = window.setInterval
+    (
+      function ()
+      {
+        if(typeof language_trans !== "default_value")
+        {
+          console.log("text changing");
+          $j(anno_getElementByXpath(xpath)).text(rtag_text);
+          rtag_text = "default_value";
+          window.clearInterval(timer);
+        }
+        else
+        {
+          console.log("returned without change");
+        }
+      }
+      ,1000
+    );
+  }
+  else {
+        console.log('already translated');
+    }
+  }
+  
+}
+
 //------------------------------------------------------------------------
 
 
@@ -205,6 +265,9 @@ function annolet_main() {
         else if (annolet_btn == 3){
           anno_phonetic(xpath);
         }
+      else if (annolet_btn == 6){
+        anno_rtag(xpath);
+      }
     };
 }
 
