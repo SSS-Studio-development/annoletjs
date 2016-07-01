@@ -250,9 +250,11 @@ function annolet_main() {
     };
   document.mouseup() = function(event)
   {
+    console.log("up event triggered");
     var target = 'target' in event ? event.target : event.srcElement; // for IE
     if (annolet_btn===6){
       var xpath = anno_getXpathTo(target);
+      console.log("function getting called");
       anno_rtag(xpath);
     }
   }
