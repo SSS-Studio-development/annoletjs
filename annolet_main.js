@@ -213,7 +213,7 @@ function anno_rtag(xpath)
   span.property = "date";
   var prop = document.createAttribute("property");
   prop.value = "date";
-  span.setAttrubuteNode(prop);
+  span.setAttributeNode(prop);
   if (window.getSelection) {
     var sel = window.getSelection();
     if (sel.rangeCount) {
