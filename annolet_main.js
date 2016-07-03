@@ -232,16 +232,20 @@ function anno_audio(xpath)
     var prop1 = document.createAttribute("src");
     var prop2 = document.createAttribute("controls");
     var prop3 = document.createAttribute("autoplay");
+    var prop4 = document.createAttribute("id");
     var string1 = "https://api.voicerss.org/?key=24041d6a5a6c4f0db89edfbff791e8cb&src=";
     var string2 = window.getSelection().toString();
     var string3 = "&hl=en-in";
     var str = string1.concat(string2,string3);
     console.log(str);
     prop1.value = str;
+    prop4.value = "uniqueid";
     node.setAttributeNode(prop1);
     node.setAttributeNode(prop2);
     node.setAttributeNode(prop3);
     clicked_element.appendChild(node);
+    var temp = document.getElementById("uniqueid");
+    clicked_element.removeChild(temp);
   }
 }
 
