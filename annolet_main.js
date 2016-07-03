@@ -258,6 +258,7 @@ function annolet_main() {
   };
   document.onmouseup = function()
   {
+    console.log("mouse up hello");
     if (annolet_btn===6){
       console.log("function getting called 123");
       anno_rtag(xpath);
