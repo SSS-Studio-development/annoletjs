@@ -251,16 +251,12 @@ function annolet_main() {
     else if (annolet_btn == 3){
       anno_phonetic(xpath);
     }
-    else if (annolet_btn===6){
-      anno_rtag(xpath);
-    }
 
   };
   document.onmouseup = function()
   {
     console.log("mouse up hello");
     if (annolet_btn===6){
-      console.log("function getting called 123");
       anno_rtag(xpath);
     }
   };
