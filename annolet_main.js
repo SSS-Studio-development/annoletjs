@@ -27,8 +27,9 @@ function annolet_createContainer() {
     /*"<li id='annolet' class=annolet-tools-menu-item id=highlight-btn onclick='annolet_btn=2;'>Highlight</li>"+*/
   "<li id='annolet' class=annolet-tools-menu-item id=highlight-btn onclick='annolet_btn=3;'>Phonetics</li>"+
     "<li id='annolet' class=annolet-tools-menu-item id=highlight-btn onclick='annolet_btn=4;'>Translation</li>"+
-    "<li id='annolet' class=annolet-tools-menu-item id=highlight-btn onclick='annolet_btn=6;'>rtag</li>"+
+    "<li id='annolet' class=annolet-tools-menu-item id=rtag-btn onclick='annolet_btn=6;'>rtag</li>"+
     "<li id='annolet' class=annolet-tools-menu-item id=exit-btn onclick='annolet_btn=0;'>exit</li>"+
+    "<li id='annolet' class=annolet-tools-menu-item id=audio-btn onclick='annolet_btn=9;'>audio</li>"+
     "</ul>"; //HTML to create a list of options
 }
 
@@ -131,7 +132,7 @@ function get_rtag(str)
 
 //function for getting phonetic
 function anno_phonetic(xpath) {
-  clicked_element = anno_getElementByXpath(xpath);
+  var clicked_element = anno_getElementByXpath(xpath);
   if (clicked_element.id == "mark" || clicked_element.id == "annolet") {
     console.log('not permitted');
   }
@@ -168,7 +169,7 @@ function anno_phonetic(xpath) {
 
 //function for getting phonetic
 function anno_language(xpath) {
-  clicked_element = anno_getElementByXpath(xpath);
+  var clicked_element = anno_getElementByXpath(xpath);
   //if element is already highlighted
   if (clicked_element.id == "mark" || clicked_element.id == "annolet") {
     console.log('not permitted');
@@ -208,7 +209,6 @@ function anno_rtag()
   var span = document.createElement("span");
   span.style.fontWeight = "bold";
   span.style.color = "green";
-  span.property = "date";
   var prop = document.createAttribute("property");
   if (window.getSelection().toString().length!==0) {
     prop.value = prompt("Enter the tag name you want to add");
@@ -221,6 +221,18 @@ function anno_rtag()
       sel.addRange(range);
     }
   }  
+}
+
+function anno_audio(xpath)
+{
+  if (window.getSelection().toString().length!==0) {
+    var clicked_element = anno_getElementByXpath(xpath);
+    var node = document.createElement("audio");
+    var prop = document.createAttribute("src");
+    prop.value = " https://api.voicerss.org/?key=24041d6a5a6c4f0db89edfbff791e8cb&src=hello&hl=en-in";
+    audio.setAttributeNode(node);
+    clicked_element.appendChild(node);
+  }
 }
 
 //------------------------------------------------------------------------
@@ -252,7 +264,10 @@ function annolet_main() {
     else if (annolet_btn===6){
       anno_rtag();
     }
-
+    else if (annolet_btn===9)
+    {
+      anno_audio(xpath);
+    }
 
   };
 
@@ -298,7 +313,7 @@ function tagObject(xpath, obj){
 
 //function for highlighting element
 function anno_highlight(xpath) {
-  clicked_element = anno_getElementByXpath(xpath);
+  var clicked_element = anno_getElementByXpath(xpath);
   //if element is already highlighted
   if (clicked_element.id == "mark" || clicked_element.id == "annolet") {
     console.log('not permitted');
