@@ -205,8 +205,6 @@ function anno_language(xpath) {
 
 function anno_rtag()
 {
-  clicked_element = anno_getElementByXpath(xpath);
-  //if element is already highlighted
   var span = document.createElement("span");
   span.style.fontWeight = "bold";
   span.style.color = "green";
