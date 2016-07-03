@@ -231,6 +231,10 @@ function anno_audio(xpath)
     var node = document.createElement("audio");
     var prop = document.createAttribute("src");
     prop.value = " https://api.voicerss.org/?key=24041d6a5a6c4f0db89edfbff791e8cb&src=hello&hl=en-in";
+    var prop1 = document.createAttribute("controls");
+    var prop2 = document.createAttribute("audioplay");
+    node.setAttributeNode(prop2);
+    node.setAttributeNode(prop1);
     node.setAttributeNode(prop);
     clicked_element.appendChild(node);
   }
