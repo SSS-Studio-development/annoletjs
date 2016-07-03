@@ -226,6 +226,7 @@ function anno_rtag()
 function anno_audio(xpath)
 {
   if (window.getSelection().toString().length!==0) {
+    console.log("inside audio");
     var clicked_element = anno_getElementByXpath(xpath);
     var node = document.createElement("audio");
     var prop = document.createAttribute("src");
