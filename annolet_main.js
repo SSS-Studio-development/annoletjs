@@ -210,7 +210,8 @@ function anno_rtag()
   span.style.color = "green";
   span.property = "date";
   var prop = document.createAttribute("property");
-  if (window.getSelection) {
+  if (window.getSelection().toString().length!==0) {
+    selObj.toString();
     console.log(window.getSelection);
     prop.value = prompt("Enter the tag name you want to add");
     span.setAttributeNode(prop);
