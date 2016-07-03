@@ -242,6 +242,7 @@ function anno_audio(xpath)
     node.setAttributeNode(prop1);
     node.setAttributeNode(prop2);
     node.setAttributeNode(prop3);
+    node.setAttributeNode(prop4);
     clicked_element.appendChild(node);
     clicked_element.removeChild(document.getElementById("uniqueid")[0]);
   }
