@@ -234,6 +234,7 @@ function annolet_main() {
   disableAllLinks()  // it will disable all the links present in webpage iteratively
   annolet_createContainer();
   document.onclick = function(event) {
+    event.preventDefault();
     if (event === undefined) {
       event = window.event;
     } // for IE
@@ -256,13 +257,10 @@ function annolet_main() {
     }
 
   };
-  document.mouseup = function(event)
+  document.mouseup = function()
   {
-    console.log("up event triggered");
-    var target = 'target' in event ? event.target : event.srcElement; // for IE
     if (annolet_btn===6){
-      var xpath = anno_getXpathTo(target);
-      console.log("function getting called");
+      console.log("function getting called 123");
       anno_rtag(xpath);
     }
   };
