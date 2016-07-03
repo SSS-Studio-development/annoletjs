@@ -212,7 +212,7 @@ function anno_rtag(xpath)
   span.style.color = "green";
   span.property = "date";
   var prop = document.createAttribute("property");
-  prop.value = "date";
+  prop.value = prompt("Enter the tag name you want to add");
   span.setAttributeNode(prop);
   if (window.getSelection) {
     var sel = window.getSelection();
