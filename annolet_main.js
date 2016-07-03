@@ -233,7 +233,7 @@ function anno_rtag(xpath)
 function annolet_main() {
   disableAllLinks()  // it will disable all the links present in webpage iteratively
   annolet_createContainer();
-  document.mousedown = function(event) {
+  document.onmousedown = function(event) {
     console.log("mouse down hello");
     event.preventDefault();
     if (event === undefined) {
@@ -256,7 +256,7 @@ function annolet_main() {
     }
 
   };
-  document.mouseup = function()
+  document.onmouseup = function()
   {
     if (annolet_btn===6){
       console.log("function getting called 123");
