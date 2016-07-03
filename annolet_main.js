@@ -212,9 +212,9 @@ function anno_rtag(xpath)
   span.style.color = "green";
   span.property = "date";
   var prop = document.createAttribute("property");
-  prop.value = prompt("Enter the tag name you want to add");
-  span.setAttributeNode(prop);
   if (window.getSelection) {
+    prop.value = prompt("Enter the tag name you want to add");
+    span.setAttributeNode(prop);
     var sel = window.getSelection();
     if (sel.rangeCount) {
       var range = sel.getRangeAt(0).cloneRange();
@@ -233,7 +233,7 @@ function anno_rtag(xpath)
 function annolet_main() {
   disableAllLinks()  // it will disable all the links present in webpage iteratively
   annolet_createContainer();
-  document.onclick = function(event) {
+  document.mousedown = function(event) {
     event.preventDefault();
     if (event === undefined) {
       event = window.event;
@@ -251,8 +251,6 @@ function annolet_main() {
       anno_phonetic(xpath);
     }
     else if (annolet_btn===6){
-      var xpath = anno_getXpathTo(target);
-      console.log("function getting called");
       anno_rtag(xpath);
     }
 
