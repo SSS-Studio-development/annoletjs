@@ -231,7 +231,7 @@ function anno_rtag()
 function annolet_main() {
   disableAllLinks()  // it will disable all the links present in webpage iteratively
   annolet_createContainer();
-  document.onmousedown = function(event) {
+  document.onclick = function(event) {
     console.log("mouse down hello");
     event.preventDefault();
     if (event === undefined) {
@@ -249,15 +249,13 @@ function annolet_main() {
     else if (annolet_btn == 3){
       anno_phonetic(xpath);
     }
-
-  };
-  document.onmouseup = function()
-  {
-    console.log("mouse up hello");
-    if (annolet_btn===6){
+    else if (annolet_btn===6){
       anno_rtag();
     }
+
+
   };
+
 }
 
 // funtion to disable all links
