@@ -245,6 +245,7 @@ function anno_audio(xpath)
     node.setAttributeNode(prop4                         );
     clicked_element.appendChild(node);
     document.getElementById("uniqueid").remove();
+    
   }
 }
 
