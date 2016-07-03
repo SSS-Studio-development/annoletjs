@@ -203,7 +203,7 @@ function anno_language(xpath) {
   }
 }
 
-function anno_rtag(xpath)
+function anno_rtag()
 {
   clicked_element = anno_getElementByXpath(xpath);
   //if element is already highlighted
@@ -257,7 +257,7 @@ function annolet_main() {
   {
     console.log("mouse up hello");
     if (annolet_btn===6){
-      anno_rtag(xpath);
+      anno_rtag();
     }
   };
 }
