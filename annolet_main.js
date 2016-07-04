@@ -207,8 +207,6 @@ function anno_language(xpath) {
 function anno_rtag()
 {
   var span = document.createElement("span");
-  span.style.fontWeight = "bold";
-  span.style.color = "green";
   var prop = document.createAttribute("property");
   if (window.getSelection().toString().length!==0) {
     prop.value = prompt("Enter the tag name you want to add");
