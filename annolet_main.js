@@ -210,6 +210,11 @@ function anno_rtag(xpath)
   var span = document.createElement("span");
   var prop = document.createAttribute("property");
   if (window.getSelection().toString().length!==0) {
+    var link = document.createElement(link);
+    link.rel = "stylesheet";
+    link.href = "https://code.jquery.com/ui/1.8.24/themes/smoothness/jquery-ui.css";
+    console.log(link);
+    
     $j("#dialog").dialog({
       
       autoOpen: true,
@@ -239,11 +244,6 @@ function anno_rtag(xpath)
       width: "400px"
       
     });
-    var div1 = document.createElement("div");
-    var id1 = document.createAttribute("id");
-    id1.value = "dialog";
-    div1.setAttributeNode(id1);
-    clicked_element.appendChild(div1);
     span.setAttributeNode(prop);
     var sel = window.getSelection();
     if (sel.rangeCount) {
