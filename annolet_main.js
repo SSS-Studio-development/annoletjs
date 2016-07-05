@@ -210,7 +210,8 @@ function anno_rtag(xpath)
   var span = document.createElement("span");
   var prop = document.createAttribute("property");
   if (window.getSelection().toString().length!==0) {
-    var link = document.createElement("link");
+    
+        var link = document.createElement("link");
     var rel = document.createAttribute("rel");
     rel.value = "stylesheet";
     var href = document.createAttribute("href");
@@ -218,7 +219,10 @@ function anno_rtag(xpath)
     link.setAttributeNode(rel);
     link.setAttributeNode(href);
     var head = document.getElementsByTagName("head");
-    head[0].appendChild(link);
+        head[0].appendChild(link);
+
+    head.append("<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> ");
+    
     $j("#dialog").dialog({
       
       autoOpen: true,
