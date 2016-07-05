@@ -204,12 +204,46 @@ function anno_language(xpath) {
   }
 }
 
-function anno_rtag()
+function anno_rtag(xpath)
 {
+  var clicked_element = anno_getElementByXpath(xpath);
   var span = document.createElement("span");
   var prop = document.createAttribute("property");
   if (window.getSelection().toString().length!==0) {
-    prop.value = prompt("Enter the tag name you want to add");
+    $("#dialog").dialog({
+      
+      autoOpen: true,
+      buttons: {
+        
+        Date: function() { 
+          
+          alert("Date!");
+          prop.value = "Date";
+          $(this).dialog("close"); 
+        },
+        Currency: function() { 
+          
+          alert("Currency");
+          prop.value = "Currency";
+          $(this).dialog("close"); 
+
+        },
+        Unit: function() { 
+          
+          alert("Unit");
+          prop.value = "Unit";
+          $(this).dialog("close"); 
+        }
+        
+      },
+      width: "400px"
+      
+    });
+    var div1 = document.createElement("div");
+    var id1 = document.createAttribute("id");
+    id1.value = "dialog";
+    div1.setAttributeNode(id1);
+    clicked_element.appendChild(div1);
     span.setAttributeNode(prop);
     var sel = window.getSelection();
     if (sel.rangeCount) {
@@ -274,7 +308,7 @@ function annolet_main() {
       anno_phonetic(xpath);
     }
     else if (annolet_btn===6){
-      anno_rtag();
+      anno_rtag(xpath);
     }
     else if (annolet_btn===9)
     {
