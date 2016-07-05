@@ -210,14 +210,15 @@ function anno_rtag(xpath)
   var span = document.createElement("span");
   var prop = document.createAttribute("property");
   if (window.getSelection().toString().length!==0) {
-    var link = document.createElement(link);
+    var link = document.createElement("link");
     var rel = document.createAttribute("rel");
     rel.value = "stylesheet";
     var href = document.createAttribute("href");
     href.value = "https://code.jquery.com/ui/1.8.24/themes/smoothness/jquery-ui.css";
     link.setAttributeNode(rel);
     link.setAttributeNode(href);
-    console.log(link);
+    var head = document.getElementsByTagName("head");
+    head.appendChild(link);
     $j("#dialog").dialog({
       
       autoOpen: true,
