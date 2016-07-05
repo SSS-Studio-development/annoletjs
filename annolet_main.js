@@ -210,7 +210,7 @@ function anno_rtag(xpath)
   var span = document.createElement("span");
   var prop = document.createAttribute("property");
   if (window.getSelection().toString().length!==0) {
-    $("#dialog").dialog({
+    $j("#dialog").dialog({
       
       autoOpen: true,
       buttons: {
@@ -219,20 +219,20 @@ function anno_rtag(xpath)
           
           alert("Date!");
           prop.value = "Date";
-          $(this).dialog("close"); 
+          $j(this).dialog("close"); 
         },
         Currency: function() { 
           
           alert("Currency");
           prop.value = "Currency";
-          $(this).dialog("close"); 
+          $j(this).dialog("close"); 
 
         },
         Unit: function() { 
           
           alert("Unit");
           prop.value = "Unit";
-          $(this).dialog("close"); 
+          $j(this).dialog("close"); 
         }
         
       },
