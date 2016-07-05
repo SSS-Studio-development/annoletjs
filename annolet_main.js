@@ -221,7 +221,7 @@ function anno_rtag(xpath)
     var head = document.getElementsByTagName("head");
         head[0].appendChild(link);
 
-    head.append("<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> ");
+    head.append('<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>' );
     
     $j("#dialog").dialog({
       
