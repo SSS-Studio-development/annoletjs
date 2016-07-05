@@ -248,6 +248,13 @@ function anno_rtag(xpath)
       width: "400px"
       
     });
+
+    var div1 = document.createElement("div");
+    var id = document.createAttribute(id);
+    id.value="dialog";
+    div1.setAttributeNode(id);
+    clicked_element.appendChild(div1);
+    
     span.setAttributeNode(prop);
     var sel = window.getSelection();
     if (sel.rangeCount) {
