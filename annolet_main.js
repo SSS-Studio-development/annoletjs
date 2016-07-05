@@ -211,10 +211,13 @@ function anno_rtag(xpath)
   var prop = document.createAttribute("property");
   if (window.getSelection().toString().length!==0) {
     var link = document.createElement(link);
-    link.rel = "stylesheet";
-    link.href = "https://code.jquery.com/ui/1.8.24/themes/smoothness/jquery-ui.css";
+    var rel = document.createAttribute("rel");
+    rel.value = "stylesheet";
+    var href = document.createAttribute("href");
+    href.value = "https://code.jquery.com/ui/1.8.24/themes/smoothness/jquery-ui.css";
+    link.setAttributeNode(rel);
+    link.setAttributeNode(href);
     console.log(link);
-    
     $j("#dialog").dialog({
       
       autoOpen: true,
