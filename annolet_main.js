@@ -218,7 +218,7 @@ function anno_rtag(xpath)
     link.setAttributeNode(rel);
     link.setAttributeNode(href);
     var head = document.getElementsByTagName("head");
-    head.appendChild(link);
+    head[0].appendChild(link);
     $j("#dialog").dialog({
       
       autoOpen: true,
