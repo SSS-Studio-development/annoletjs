@@ -273,8 +273,8 @@ function anno_free_down()
 
 function rajfunc(event)
 {
-  console.log(event.clientX);
-  console.log(event.clientY);
+  console.log(event.screenX);
+  console.log(event.screenY);
   if(freed==true)
 
   {
