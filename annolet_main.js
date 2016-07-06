@@ -278,12 +278,9 @@ function rajfunc(event)
   {
     var canvas = document.getElementById('myuniquecanvasid');
     var context = canvas.getContext('2d');
-//    var centerX = (event.pageX*300)/1524;
-    //    var centery = (event.pageY*150)/748;
-    var centerX = 150;
-    var centerY = 75;
-//    var centerX = canvas.width;
-//    var centerY = canvas.height;
+    var centerX = (event.pageX*300)/1524;
+    var centerY = (event.pageY*150)/748;
+
     var radius = 0.5;
 
 
