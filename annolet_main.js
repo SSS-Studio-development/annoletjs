@@ -263,12 +263,12 @@ function anno_audio(xpath)
 
 function anno_free_up()
 {
-  freed=true;
+  freed=false;
 }
 
 function anno_free_down()
 {
-  freed=false;
+  freed=true;
 }
 
 function rajfunc(event)
@@ -334,11 +334,13 @@ function annolet_main() {
   };
   document.onmousedown = function(event)
   {
-    anno_free_down();
+    if(annolet_btn===10)
+      anno_free_down();
   };
   document.onmouseup = function(event)
   {
-    anno_free_up();
+    if(annolet_btn===10)
+      anno_free_up();
   };
   document.onmousemove = function(event)
   {
