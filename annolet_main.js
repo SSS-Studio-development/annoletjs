@@ -67,7 +67,7 @@ function addcanvas()
   console.log("asdlkf");
   var temp1 = $j('body').html();
   console.log(temp1);
-  var temp = "  <canvas style=\"width:100%; height:100%; margin: 0; padding: 0;position:absolute;\" id=\"mycanvas\" > </canvas>";
+  var temp = "  <canvas style=\"width:100%; height:100%; margin: 0; padding: 0;position:absolute;\" id=\"myuniquecanvasid\" > </canvas>";
   var fina = temp.concat(temp1);
   $j("body").html(fina);
 }
@@ -276,7 +276,8 @@ function rajfunc(event)
   if(freed==true)
 
   {
-    var canvas = document.getElementById('mycanvas');
+    var canvas = document.getElementById('myuniquecanvasid');
+    console.log(canvas.scrollTop());
     var context = canvas.getContext('2d');
     var centerX = (event.clientX*300)/1350;
     var centerY = (event.clientY*150)/660;
