@@ -281,6 +281,8 @@ function rajfunc(event)
     var centerX = (event.clientX);
     var centerY = (event.clientY);
     var radius = 0.5;
+    console.log(event.clientX);
+    console.log(event.clientY);
     
 
     context.beginPath();
