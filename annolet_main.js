@@ -281,14 +281,13 @@ function rajfunc(event)
     var centerX = (event.pageX*canvas.width)/1524;
     var centerY = (event.pageY*canvas.height)/748;
 
-    var radius = 0.5;
+    var radius = 0.05;
 
 
     context.beginPath();
     context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
     context.fillStyle = 'green';
     context.fill();
-    context.lineWidth = 0.5;
     context.strokeStyle = '#003300';
     context.stroke();
   }
