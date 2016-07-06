@@ -285,10 +285,9 @@ function rajfunc(event)
 
 
     context.beginPath();
-    context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+    context.arc(centerX, centerY, radius, 0, 2 * Math.PI);
     context.fillStyle = 'green';
     context.fill();
-    context.strokeStyle = '#003300';
     context.stroke();
   }
   
