@@ -277,7 +277,6 @@ function rajfunc(event)
 
   {
     var canvas = document.getElementById('myuniquecanvasid');
-    console.log(canvas.scrollTop());
     var context = canvas.getContext('2d');
     var centerX = (event.clientX*300)/1350;
     var centerY = (event.clientY*150)/660;
