@@ -67,7 +67,7 @@ function addcanvas()
   console.log("asdlkf");
   var temp1 = $j('body').html();
   console.log(temp1);
-  var temp = "  <canvas style=\"width:100%; height:100%; margin: 0; padding: 0;position:absolute;\" onmousemove=\"rajfunc(event)\" id=\"mycanvas\" onmousedown=\"downfunc()\"  onmouseup=\"upfunc()\"> </canvas>";
+  var temp = "  <canvas style=\"width:100%; height:100%; margin: 0; padding: 0;position:absolute;\" id=\"mycanvas\" > </canvas>";
   var fina = temp.concat(temp1);
   $j("body").html(fina);
 }
@@ -261,10 +261,14 @@ function anno_audio(xpath)
   }
 }
 
-function anno_click_freedraw(xpath)
+function anno_free_up()
 {
-  if(freed==false) freed = true;
-  else freed = false;
+  freed=true;
+}
+
+function anno_free_down()
+{
+  freed=false;
 }
 
 function rajfunc(event)
@@ -326,13 +330,16 @@ function annolet_main() {
     else if (annolet_btn===6){
       anno_rtag(xpath);
     }
-    else if (annolet_btn===10)
-    {
-      anno_click_freedraw(xpath);
-    }
 
   };
-
+  document.onmousedown = function(event)
+  {
+    anno_free_down();
+  };
+  document.onmouseup = function(event)
+  {
+    anno_free_up();
+  };
   document.onmousemove = function(event)
   {
     if(annolet_btn===10)
