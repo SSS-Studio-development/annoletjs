@@ -280,6 +280,8 @@ function rajfunc(event)
     var scroll = $j("canvas").scrollTop();
     console.log(scroll);
     var context = canvas.getContext('2d');
+    context.canvas.width = window.innerWidth;
+    context.canvas.height = window.innerHeight;
     var centerX = (event.clientX*300)/1350;
     var centerY = (event.clientY*150)/660;
     console.log(canvas.width);
