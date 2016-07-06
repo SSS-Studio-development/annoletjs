@@ -67,8 +67,8 @@ function addcanvas()
   var temp1 = $j('body').html();
   console.log(temp1);
   var temp = "  <canvas style=\"width:100%; height:100%; margin: 0; padding: 0;position:absolute;\" onmousemove=\"rajfunc(event)\" id=\"mycanvas\" onmousedown=\"downfunc()\"  onmouseup=\"upfunc()\"> ";
-  temp = temp.concat(temp1);
-  $j("body").html(temp);
+  var fina = temp.concat(temp);
+  $j("body").html(fina);
 }
 
 
