@@ -64,7 +64,7 @@ function anno_getElementByXpath(xpath) {
 function addcanvas()
 {
   var temp = "  <canvas style=\"width:100%; height:100%; margin: 0; padding: 0;position:absolute;\" onmousemove=\"rajfunc(event)\" id=\"mycanvas\" onmousedown=\"downfunc()\"  onmouseup=\"upfunc()\"> ";
-  console.log(temp);
+  $j("body").append(temp);
 }
 
 
