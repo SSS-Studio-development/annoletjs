@@ -63,8 +63,9 @@ function anno_getElementByXpath(xpath) {
 
 function addcanvas()
 {
+  console.log("adding canvas");
   var temp = "  <canvas style=\"width:100%; height:100%; margin: 0; padding: 0;position:absolute;\" onmousemove=\"rajfunc(event)\" id=\"mycanvas\" onmousedown=\"downfunc()\"  onmouseup=\"upfunc()\"> ";
-  $j("body").append(temp);
+
 }
 
 
@@ -261,7 +262,7 @@ function anno_audio(xpath)
 
 //main function which will execute other functions
 function annolet_main() {
-  disableAllLinks()  // it will disable all the links present in webpage iteratively
+  disableAllLinks();  // it will disable all the links present in webpage iteratively
   annolet_createContainer();
   addcanvas();
   document.onclick = function(event) {
