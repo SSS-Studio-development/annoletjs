@@ -29,6 +29,7 @@ function annolet_createContainer() {
     "<li id='annolet' class=annolet-tools-menu-item id=highlight-btn onclick='annolet_btn=4;'>Translation</li>"+
     "<li id='annolet' class=annolet-tools-menu-item id=rtag-btn onclick='annolet_btn=6;'>rtag</li>"+
     "<li id='annolet' class=annolet-tools-menu-item id=audio-btn onclick='annolet_btn=9;'>audio</li>"+
+    "<li id='annolet' class=annolet-tools-menu-item id=audio-btn onclick='annolet_btn=10;'>freedraw</li>"+
     "<li id='annolet' class=annolet-tools-menu-item id=exit-btn onclick='annolet_btn=0;'>exitfree</li>"+
     "</ul>"; //HTML to create a list of options
 }
@@ -68,7 +69,6 @@ function addcanvas()
   console.log(temp1);
   var temp = "  <canvas style=\"width:100%; height:100%; margin: 0; padding: 0;position:absolute;\" onmousemove=\"rajfunc(event)\" id=\"mycanvas\" onmousedown=\"downfunc()\"  onmouseup=\"upfunc()\"> </canvas>";
   var fina = temp.concat(temp1);
-  console.log(fina);
   $j("body").html(fina);
 }
 
@@ -76,6 +76,7 @@ function addcanvas()
 var phonetic_trans = "default_value";
 var language_trans = "default_value";
 var rtag_text = "default value";
+var freed = false;
 
 function get_phonetics(str){
 
@@ -253,12 +254,47 @@ function anno_audio(xpath)
     node.setAttributeNode(prop1);
     node.setAttributeNode(prop2);
     node.setAttributeNode(prop3);
-    node.setAttributeNode(prop4                         );
+    node.setAttributeNode(prop4);
     clicked_element.appendChild(node);
     document.getElementById("uniqueid").remove();
     
   }
 }
+
+function anno_click_freedraw(xpath)
+{
+  if(freed==false) freed = true;
+  else freed = false;
+}
+
+function rajfunc(event)
+{
+  if(freed==true)
+
+  {
+    var canvas = document.getElementById('mycanvas');
+    var context = canvas.getContext('2d');
+    var centerX = (event.clientX*300)/1350;
+    var centerY = (event.clientY*150)/660;
+    console.log(canvas.width);
+    console.log(canvas.height);
+    console.log(event.clientX);
+    console.log(event.clientY);
+    console.log(canvas);
+    var radius = 0.5;
+
+    context.beginPath();
+    context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+    context.fillStyle = 'green';
+    context.fill();
+    context.lineWidth = 0.5;
+    context.strokeStyle = '#003300';
+    context.stroke();
+  }
+  
+}
+
+
 
 //------------------------------------------------------------------------
 
@@ -290,11 +326,19 @@ function annolet_main() {
     else if (annolet_btn===6){
       anno_rtag(xpath);
     }
-    else if (annolet_btn===9)
+    else if (annolet_btn===10)
     {
-      anno_audio(xpath);
+      anno_click_freedraw(xpath);
     }
 
+  };
+
+  document.onmousemove = function(event)
+  {
+    if(annolet_btn===10)
+    {
+      rajfunc(event);
+    }
   };
 
 }
