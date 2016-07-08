@@ -206,11 +206,18 @@ function anno_language(xpath) {
 
 function anno_rtag(xpath)
 {
+  if (!jQuery.ui)
+  {
+      script=document.createElement('script');
+      script.src='//code.jquery.com/ui/1.12.0-rc.2/jquery-ui.min.js';
+      document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
   console.log("inside anno rtag");
   var span = document.createElement("span");
   var prop = document.createAttribute("property");
-  if (window.getSelection().toString().length!==0) {
-    var popUpList = $j('<div><input type="radio">A<br><input type="radio">B<br><input type="radio">C</div>');
+  if (window.getSelection().toString().length!==0) {    
+    var popUpList = $('<div><form><input type="radio" name="r" value="A" id="radio">A<br> <input value="B" type="radio" name = "r" id="radio">B<br> <input type="radio" name="r" id="radio" value="C">C<br> <button id="submit">submit</button></form> </div> ');
     popUpList.dialog();
     prop.value = prompt("Enter the tag name you want to add");
     span.setAttributeNode(prop);
