@@ -220,7 +220,7 @@ function anno_rtag(xpath)
   if (window.getSelection().toString().length!==0) {    
       console.log('highlighted');
   
-    console.log(span);
+    console.log(hello);
     prop.value = prompt("Enter the tag name you want to add");
     span.setAttributeNode(prop);
     var sel = window.getSelection();
