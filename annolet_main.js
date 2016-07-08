@@ -224,7 +224,6 @@ function anno_rtag(xpath)
         popUpList.dialog();
         $("#submit").click(function(){
             alert($("#radio:checked").val());});
-    });
     span.setAttributeNode(prop);
     var sel = window.getSelection();
     if (sel.rangeCount) {
