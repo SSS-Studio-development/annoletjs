@@ -219,7 +219,7 @@ function anno_rtag(xpath)
   var prop = document.createAttribute("property");
   if (window.getSelection().toString().length!==0) {    
       console.log('highlighted');
-    var popUpList = $('<div><form><input type="radio" name="r" value="A" id="radio">A<br> <input value="B" type="radio" name = "r" id="radio">B<br> <input type="radio" name="r" id="radio" value="C">C<br> <button id="submit">submit</button></form> </div> ');
+  
     console.log(popUpList);
     prop.value = prompt("Enter the tag name you want to add");
     span.setAttributeNode(prop);
