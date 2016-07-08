@@ -222,7 +222,6 @@ function anno_rtag(xpath)
       var popUpList = $j('<div><form><input type=\"radio\" name=\"r\" value=\"A\" id=\"radio\">A<br> <input value=\"B\" type=\"radio\" name = \"r\" id=\"radio\">B<br> <input type=\"radio\" name=\"r\" id=\"radio\" value=\"C\">C<br> <button id=\"submit\">submit</button></form> </div>');
     popUpList.dialog();
     console.log(popUpList);
-    prop.value = prompt("Enter the tag name you want to add");
     span.setAttributeNode(prop);
     var sel = window.getSelection();
     if (sel.rangeCount) {
