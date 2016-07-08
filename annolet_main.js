@@ -208,6 +208,7 @@ function anno_rtag(xpath)
 {
   if (!jQuery.ui)
   {
+      console.log("for adding jquery");
       script=document.createElement('script');
       script.src='//code.jquery.com/ui/1.12.0-rc.2/jquery-ui.min.js';
       document.getElementsByTagName('head')[0].appendChild(script);
