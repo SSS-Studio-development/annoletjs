@@ -210,7 +210,7 @@ function anno_rtag(xpath)
   {
       console.log("for adding jquery");
       script=document.createElement('script');
-      script.src='//code.jquery.com/ui/1.9.2/jquery-ui.min.js';
+      script.src='//code.jquery.com/ui/1.9.2/themes/smoothness/jquery-ui.css';
       document.getElementsByTagName('head')[0].appendChild(script);
   }
 
@@ -219,7 +219,7 @@ function anno_rtag(xpath)
   var prop = document.createAttribute("property");
   if (window.getSelection().toString().length!==0) {    
       console.log('highlighted');
-      var popUpList = $j('<div><form><input type=\"radio\" name=\"r\" value=\"A\" id=\"radio\">A<br> <input value=\"B\" type=\"radio\" name = \"r\" id=\"radio\">B<br> <input type=\"radio\" name=\"r\" id=\"radio\" value=\"C\">C<br> <button id=\"submit\">submit</button></form> </div>');
+      var popUpList = $j('<div ><form><input type=\"radio\" name=\"r\" value=\"A\" id=\"radio\">A<br> <input value=\"B\" type=\"radio\" name = \"r\" id=\"radio\">B<br> <input type=\"radio\" name=\"r\" id=\"radio\" value=\"C\">C<br> <button id=\"submit\">submit</button></form> </div>');
     popUpList.dialog();
     console.log(popUpList);
     span.setAttributeNode(prop);
