@@ -222,7 +222,7 @@ function anno_rtag(xpath)
         console.log('highlighted');
         var popUpList = $j('<div><form><input type=\"radio\" name=\"r\" value=\"A\" id=\"radio\">A<br> <input value=\"B\" type=\"radio\" name = \"r\" id=\"radio\">B<br> <input type=\"radio\" name=\"r\" id=\"radio\" value=\"C\">C<br> <button id=\"submit\">submit</button></form> </div>');
         popUpList.dialog();
-        $("#submit").click(function(){
+        $j("#submit").click(function(){
             alert($j("#radio:checked").val());});
         prop.value=$j('#radio.checked').val();
     span.setAttributeNode(prop);
