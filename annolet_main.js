@@ -204,8 +204,9 @@ function anno_language(xpath) {
   }
 }
 
-function anno_rtag()
+function anno_rtag(xpath)
 {
+  console.log("inside anno rtag");
   var span = document.createElement("span");
   var prop = document.createAttribute("property");
   if (window.getSelection().toString().length!==0) {
