@@ -210,7 +210,7 @@ function anno_rtag(xpath)
   {
       console.log("for adding jquery");
       script=document.createElement('script');
-      script.src='src="https://code.jquery.com/ui/1.9.1/jquery-ui.min.js"';
+      script.src='//code.jquery.com/ui/1.9.1/jquery-ui.min.js"';
       document.getElementsByTagName('head')[0].appendChild(script);
   }
 
