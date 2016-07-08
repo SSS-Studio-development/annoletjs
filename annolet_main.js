@@ -214,7 +214,7 @@ function anno_rtag(xpath)
       document.getElementsByTagName('head')[0].appendChild(script);
   }
 
-  console.log("inside anno rtag");
+
   var span = document.createElement("span");
   var prop = document.createAttribute("property");
   if (window.getSelection().toString().length!==0) {    
