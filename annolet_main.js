@@ -212,9 +212,13 @@ function anno_rtag()
     {
         console.log("for adding jquery ui");
         script=document.createElement('script');
+        link=document.createElement('link');
 
         script.src='//code.jquery.com/ui/1.10.3/jquery-ui.min.js';
+        link.rel="stylesheet";
+        link.href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css";
         document.getElementsByTagName('head')[0].appendChild(script);
+        document.getElementsByTagName('head')[0].appendChild(link);
     }
 
     var span = document.createElement("span");
@@ -237,7 +241,6 @@ function anno_rtag()
             sel.addRange(range);
         }
     }  
-    anno_rtag();
 }
 
 
@@ -275,37 +278,36 @@ function anno_audio(xpath)
 function annolet_main() {
     disableAllLinks()  // it will disable all the links present in webpage iteratively
         annolet_createContainer();
-    anno_rtag();
-//    document.onclick = function(event) {
-//
-//        console.log(disabled);
-//        if(disabled==true) return false;
-//        console.log("mouse down hello");
-//        event.preventDefault();
-//        if (event === undefined) {
-//            event = window.event;
-//        } // for IE
-//        var target = 'target' in event ? event.target : event.srcElement; // for IE
-//        var root = document.compatMode === 'CSS1Compat' ? document.documentElement : document.body;
-//        var xpath = anno_getXpathTo(target);
-//        if (annolet_btn === 1) {
-//            anno_highlight(xpath);
-//        }
-//        if(annolet_btn === 4){
-//            anno_language(xpath);
-//        }
-//        else if (annolet_btn == 3){
-//            anno_phonetic(xpath);
-//        }
-//        else if (annolet_btn===6){
-//            anno_rtag(xpath);
-//        }
-//        else if (annolet_btn===9)
-//        {
-//            anno_audio(xpath);
-//        }
-//
-//    };
+    document.onclick = function(event) {
+
+        console.log(disabled);
+        if(disabled==true) return false;
+        console.log("mouse down hello");
+        event.preventDefault();
+        if (event === undefined) {
+            event = window.event;
+       } // for IE
+        var target = 'target' in event ? event.target : event.srcElement; // for IE
+        var root = document.compatMode === 'CSS1Compat' ? document.documentElement : document.body;
+        var xpath = anno_getXpathTo(target);
+        if (annolet_btn === 1) {
+            anno_highlight(xpath);
+        }
+        if(annolet_btn === 4){
+            anno_language(xpath);
+        }
+        else if (annolet_btn == 3){
+            anno_phonetic(xpath);
+        }
+        else if (annolet_btn===6){
+            anno_rtag(xpath);
+        }
+        else if (annolet_btn===9)
+        {
+            anno_audio(xpath);
+        }
+
+    };
 
 }
 
