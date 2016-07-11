@@ -226,8 +226,8 @@ function anno_rtag(xpath)
         console.log('highlighted');
 //        var div = document.createElement('div');
 //        div.innerHTML='<form><input type=\"radio\" name=\"r1\" value=\"A\" id=\"radio1\" checked=\"checked\">Date<br><label for="radio2">Currency</label> <input value=\"B\" type=\"radio\" name = \"r2\" id=\"radio2\"><br> <input type=\"radio\" name=\"r3\" id=\"radio3\" value=\"C\">Unit<br> <button id=\"submitunique\">submit</button></form>';
-//        var popUpList = '<div><form><input type=\"radio\" name=\"r1\" value=\"A\" id=\"radio1\" checked=\"checked\">Date<br><label for="radio2">Currency</label> <input value=\"B\" type=\"radio\" name = \"r2\" id=\"radio2\"><br> <input type=\"radio\" name=\"r3\" id=\"radio3\" value=\"C\">Unit<br> <button id=\"submitunique\">submit</button></form></div>';
-//        popUpList.dialog();
+        var popUpList = $j('<div><form><input type=\"radio\" name=\"r1\" value=\"A\" id=\"radio1\" checked=\"checked\">Date<br><label for="radio2">Currency</label> <input value=\"B\" type=\"radio\" name = \"r2\" id=\"radio2\"><br> <input type=\"radio\" name=\"r3\" id=\"radio3\" value=\"C\">Unit<br> <button id=\"submitunique\">submit</button></form></div>');
+        popUpList.dialog();
 //        document.getElementsByTagName('body')[0].appendChild(div);
 //        $j("#submitunique").click(function(){
 //            console.log("submit clicked");
@@ -279,6 +279,8 @@ function anno_audio(xpath)
 function annolet_main() {
     disableAllLinks()  // it will disable all the links present in webpage iteratively
         annolet_createContainer();
+  var popUpList = $j('<div><form><input type=\"radio\" name=\"r1\" value=\"A\" id=\"radio1\" checked=\"checked\">Date<br><label for="radio2">Currency</label> <input value=\"B\" type=\"radio\" name = \"r2\" id=\"radio2\"><br> <input type=\"radio\" name=\"r3\" id=\"radio3\" value=\"C\">Unit<br> <button id=\"submitunique\">submit</button></form></div>');
+  popUpList.dialog();
     document.onclick = function(event) {
         console.log("mouse down hello");
         event.preventDefault();
