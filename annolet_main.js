@@ -293,8 +293,8 @@ function annolet_main() {
         document.getElementsByTagName('head')[0].appendChild(link);
     }
 
-  var popUpList = $j('<div><form><input type=\"radio\" name=\"r1\" value=\"A\" id=\"radio1\" checked=\"checked\">Date<br><label for="radio2">Currency</label> <input value=\"B\" type=\"radio\" name = \"r2\" id=\"radio2\"><br> <input type=\"radio\" name=\"r3\" id=\"radio3\" value=\"C\">Unit<br> <button id=\"submitunique\">submit</button></form></div>');
-  popUpList.dialog();
+ var popUpList = $j('<div><form><input type=\"radio\" name=\"r1\" value=\"A\" id=\"radio1\" checked=\"checked\">Date<br><label for="radio2">Currency</label> <input value=\"B\" type=\"radio\" name = \"r2\" id=\"radio2\"><br> <input type=\"radio\" name=\"r3\" id=\"radio3\" value=\"C\">Unit<br> <button id=\"submitunique\">submit</button></form> </div>');
+   popUpList.dialog();
 //    document.onclick = function(event) {
 //        console.log("mouse down hello");
 //        event.preventDefault();
