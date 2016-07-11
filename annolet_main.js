@@ -210,8 +210,8 @@ function anno_rtag(xpath)
     if (!jQuery.ui)
     {
         console.log("for adding jquery ui");
-        script=document.createElement('script');
-        link=document.createElement('link');
+        var script=document.createElement('script');
+        var link=document.createElement('link');
 
         script.src='//code.jquery.com/ui/1.11.4/jquery-ui.min.js';
         link.rel="stylesheet";
