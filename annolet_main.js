@@ -224,10 +224,12 @@ function anno_rtag(xpath)
     var prop = document.createAttribute("property");
     if (window.getSelection().toString().length!==0) {    
         console.log('highlighted');
-        var popUpList = '<div><form><input type=\"radio\" name=\"r1\" value=\"A\" id=\"radio1\" checked=\"checked\">Date<br><label for="radio2">Currency</label> <input value=\"B\" type=\"radio\" name = \"r2\" id=\"radio2\"><br> <input type=\"radio\" name=\"r3\" id=\"radio3\" value=\"C\">Unit<br> <button id=\"submitunique\">submit</button></form></div>';
+        var div = document.createElement('div');
+        div.innerHTML='<form><input type=\"radio\" name=\"r1\" value=\"A\" id=\"radio1\" checked=\"checked\">Date<br><label for="radio2">Currency</label> <input value=\"B\" type=\"radio\" name = \"r2\" id=\"radio2\"><br> <input type=\"radio\" name=\"r3\" id=\"radio3\" value=\"C\">Unit<br> <button id=\"submitunique\">submit</button></form>';
+//        var popUpList = '<div><form><input type=\"radio\" name=\"r1\" value=\"A\" id=\"radio1\" checked=\"checked\">Date<br><label for="radio2">Currency</label> <input value=\"B\" type=\"radio\" name = \"r2\" id=\"radio2\"><br> <input type=\"radio\" name=\"r3\" id=\"radio3\" value=\"C\">Unit<br> <button id=\"submitunique\">submit</button></form></div>';
 //        popUpList.dialog();
         console.log(popUpList);
-        document.getElementsByTagName('body')[0].appendChild(popUpList);
+        document.getElementsByTagName('body')[0].appendChild(div);
         $j("#submitunique").click(function(){
             console.log("submit clicked");
             alert($j("#radio:checked").val());});
