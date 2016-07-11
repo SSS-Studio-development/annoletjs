@@ -64,7 +64,6 @@ function anno_getElementByXpath(xpath) {
 var phonetic_trans = "default_value";
 var language_trans = "default_value";
 var rtag_text = "default value";
-var disabled = false;
 
 function get_phonetics(str){
 
@@ -205,7 +204,7 @@ function anno_language(xpath) {
     }
 }
 
-function anno_rtag()
+function anno_rtag(xpath)
 {
 
     if (!jQuery.ui)
@@ -214,7 +213,7 @@ function anno_rtag()
         script=document.createElement('script');
         link=document.createElement('link');
 
-        script.src='//code.jquery.com/ui/1.10.3/jquery-ui.min.js';
+        script.src='//code.jquery.com/ui/1.11.4/jquery-ui.min.js';
         link.rel="stylesheet";
         link.href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css";
         document.getElementsByTagName('head')[0].appendChild(script);
@@ -224,10 +223,10 @@ function anno_rtag()
     var span = document.createElement("span");
     var prop = document.createAttribute("property");
     if (window.getSelection().toString().length!==0) {    
-        disabled=true;
         console.log('highlighted');
         var popUpList = $j('<form><input type=\"radio\" name=\"r1\" value=\"A\" id=\"radio1\" checked=\"checked\">Date<br><label for="radio2">Currency</label> <input value=\"B\" type=\"radio\" name = \"r2\" id=\"radio2\"><br> <input type=\"radio\" name=\"r3\" id=\"radio3\" value=\"C\">Unit<br> <button id=\"submitunique\">submit</button></form>');
-        popUpList.dialog();
+//        popUpList.dialog();
+        document.getElementsByTagName('body')[0].appendChild(popUpList);
         $j("#submitunique").click(function(){
             console.log("submit clicked");
             alert($j("#radio:checked").val());});
@@ -279,9 +278,6 @@ function annolet_main() {
     disableAllLinks()  // it will disable all the links present in webpage iteratively
         annolet_createContainer();
     document.onclick = function(event) {
-
-        console.log(disabled);
-        if(disabled==true) return false;
         console.log("mouse down hello");
         event.preventDefault();
         if (event === undefined) {
