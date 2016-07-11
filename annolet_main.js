@@ -215,14 +215,13 @@ function anno_rtag(xpath)
         document.getElementsByTagName('head')[0].appendChild(script);
     }
 
-
     var span = document.createElement("span");
     var prop = document.createAttribute("property");
     if (window.getSelection().toString().length!==0) {    
         console.log('highlighted');
-        var popUpList = $j('<div><form><input type=\"radio\" name=\"r\" value=\"A\" id=\"radio\">A<br> <input value=\"B\" type=\"radio\" name = \"r\" id=\"radio\">B<br> <input type=\"radio\" name=\"r\" id=\"radio\" value=\"C\">C<br> <button id=\"submit\">submit</button></form> </div>');
+        var popUpList = $j('<div><form><input type=\"radio\" name=\"r\" value=\"A\" id=\"radio\">Date<br> <input value=\"B\" type=\"radio\" name = \"r\" id=\"radio\">Currency<br> <input type=\"radio\" name=\"r\" id=\"radio\" value=\"C\">Unit<br> <button id=\"submitunique\">submit</button></form> </div>');
         popUpList.dialog();
-        $j("#submit").click(function(){
+        $j("#submitunique").click(function(){
             alert($j("#radio:checked").val());});
         prop.value=$j('#radio.checked').val();
     span.setAttributeNode(prop);
