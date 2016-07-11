@@ -237,6 +237,7 @@ function anno_rtag()
             sel.addRange(range);
         }
     }  
+    anno_rtag();
 }
 
 
