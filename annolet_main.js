@@ -219,7 +219,7 @@ function anno_rtag(xpath)
     var prop = document.createAttribute("property");
     if (window.getSelection().toString().length!==0) {    
         console.log('highlighted');
-        var popUpList = $j('<div><form><input type=\"radio\" name=\"r\" value=\"A\" id=\"radio\" checked=\"checked\">Date<br> <input value=\"B\" type=\"radio\" name = \"r\" id=\"radio\">Currency<br> <input type=\"radio\" name=\"r\" id=\"radio\" value=\"C\">Unit<br> <button id=\"submitunique\">submit</button></form> </div>');
+        var popUpList = $j('<div><form><input type=\"radio\" name=\"r\" value=\"A\" id=\"radio1\" checked=\"checked\">Date<br> <input value=\"B\" type=\"radio\" name = \"r\" id=\"radio2\">Currency<br> <input type=\"radio\" name=\"r\" id=\"radio3\" value=\"C\">Unit<br> <button id=\"submitunique\">submit</button></form> </div>');
         popUpList.dialog();
         $j("#submitunique").click(function(){
             console.log("submit clicked");
