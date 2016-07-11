@@ -278,7 +278,21 @@ function anno_audio(xpath)
 //main function which will execute other functions
 function annolet_main() {
     disableAllLinks()  // it will disable all the links present in webpage iteratively
-        annolet_createContainer();
+  annolet_createContainer();
+
+    if (!jQuery.ui)
+    {
+        console.log("for adding jquery ui");
+        var script=document.createElement('script');
+        var link=document.createElement('link');
+
+        script.src='//code.jquery.com/ui/1.11.4/jquery-ui.min.js';
+        link.rel="stylesheet";
+        link.href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css";
+        document.getElementsByTagName('head')[0].appendChild(script);
+        document.getElementsByTagName('head')[0].appendChild(link);
+    }
+
   var popUpList = $j('<div><form><input type=\"radio\" name=\"r1\" value=\"A\" id=\"radio1\" checked=\"checked\">Date<br><label for="radio2">Currency</label> <input value=\"B\" type=\"radio\" name = \"r2\" id=\"radio2\"><br> <input type=\"radio\" name=\"r3\" id=\"radio3\" value=\"C\">Unit<br> <button id=\"submitunique\">submit</button></form></div>');
   popUpList.dialog();
 //    document.onclick = function(event) {
