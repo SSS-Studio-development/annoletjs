@@ -64,6 +64,7 @@ function anno_getElementByXpath(xpath) {
 var phonetic_trans = "default_value";
 var language_trans = "default_value";
 var rtag_text = "default value";
+var disabled = false;
 
 function get_phonetics(str){
 
@@ -218,6 +219,7 @@ function anno_rtag(xpath)
     var span = document.createElement("span");
     var prop = document.createAttribute("property");
     if (window.getSelection().toString().length!==0) {    
+        disabled=true;
         console.log('highlighted');
         var popUpList = $j('<div><form><input type=\"radio\" name=\"r\" value=\"A\" id=\"radio1\" checked=\"checked\">Date<br><label for="radio2">Currency</label> <input value=\"B\" type=\"radio\" name = \"r\" id=\"radio2\"><br> <input type=\"radio\" name=\"r\" id=\"radio3\" value=\"C\">Unit<br> <button id=\"submitunique\">submit</button></form> </div>');
         popUpList.dialog();
@@ -232,6 +234,7 @@ function anno_rtag(xpath)
         range.surroundContents(span);
         sel.removeAllRanges();
         sel.addRange(range);
+        disabled=false;
     }
 }  
 }
@@ -272,6 +275,7 @@ function annolet_main() {
     disableAllLinks()  // it will disable all the links present in webpage iteratively
         annolet_createContainer();
     document.onclick = function(event) {
+        if(disabled==true) return false;
         console.log("mouse down hello");
         event.preventDefault();
         if (event === undefined) {
