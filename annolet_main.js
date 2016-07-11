@@ -205,8 +205,17 @@ function anno_language(xpath) {
     }
 }
 
-function anno_rtag(xpath)
+function anno_rtag()
 {
+
+    if (!jQuery.ui)
+    {
+        console.log("for adding jquery ui");
+        script=document.createElement('script');
+
+        script.src='//code.jquery.com/ui/1.10.3/jquery-ui.min.js';
+        document.getElementsByTagName('head')[0].appendChild(script);
+    }
 
     var span = document.createElement("span");
     var prop = document.createAttribute("property");
@@ -219,15 +228,15 @@ function anno_rtag(xpath)
             console.log("submit clicked");
             alert($j("#radio:checked").val());});
         prop.value=$j('#radio.checked').val();
-    span.setAttributeNode(prop);
-    var sel = window.getSelection();
-    if (sel.rangeCount) {
-        var range = sel.getRangeAt(0).cloneRange();
-        range.surroundContents(span);
-        sel.removeAllRanges();
-        sel.addRange(range);
-    }
-}  
+        span.setAttributeNode(prop);
+        var sel = window.getSelection();
+        if (sel.rangeCount) {
+            var range = sel.getRangeAt(0).cloneRange();
+            range.surroundContents(span);
+            sel.removeAllRanges();
+            sel.addRange(range);
+        }
+    }  
 }
 
 
@@ -265,35 +274,37 @@ function anno_audio(xpath)
 function annolet_main() {
     disableAllLinks()  // it will disable all the links present in webpage iteratively
         annolet_createContainer();
-    document.onclick = function(event) {
-        console.log(disabled);
-        if(disabled==true) return false;
-        console.log("mouse down hello");
-        event.preventDefault();
-        if (event === undefined) {
-            event = window.event;
-        } // for IE
-        var target = 'target' in event ? event.target : event.srcElement; // for IE
-        var root = document.compatMode === 'CSS1Compat' ? document.documentElement : document.body;
-        var xpath = anno_getXpathTo(target);
-        if (annolet_btn === 1) {
-            anno_highlight(xpath);
-        }
-        if(annolet_btn === 4){
-            anno_language(xpath);
-        }
-        else if (annolet_btn == 3){
-            anno_phonetic(xpath);
-        }
-        else if (annolet_btn===6){
-            anno_rtag(xpath);
-        }
-        else if (annolet_btn===9)
-        {
-            anno_audio(xpath);
-        }
-
-    };
+    anno_rtag();
+//    document.onclick = function(event) {
+//
+//        console.log(disabled);
+//        if(disabled==true) return false;
+//        console.log("mouse down hello");
+//        event.preventDefault();
+//        if (event === undefined) {
+//            event = window.event;
+//        } // for IE
+//        var target = 'target' in event ? event.target : event.srcElement; // for IE
+//        var root = document.compatMode === 'CSS1Compat' ? document.documentElement : document.body;
+//        var xpath = anno_getXpathTo(target);
+//        if (annolet_btn === 1) {
+//            anno_highlight(xpath);
+//        }
+//        if(annolet_btn === 4){
+//            anno_language(xpath);
+//        }
+//        else if (annolet_btn == 3){
+//            anno_phonetic(xpath);
+//        }
+//        else if (annolet_btn===6){
+//            anno_rtag(xpath);
+//        }
+//        else if (annolet_btn===9)
+//        {
+//            anno_audio(xpath);
+//        }
+//
+//    };
 
 }
 
