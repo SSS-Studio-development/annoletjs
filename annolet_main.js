@@ -221,7 +221,7 @@ function anno_rtag(xpath)
     if (window.getSelection().toString().length!==0) {    
         disabled=true;
         console.log('highlighted');
-        var popUpList = $j('<div><form><input type=\"radio\" name=\"r1\" value=\"A\" id=\"radio1\" checked=\"checked\">Date<br><label for="radio2">Currency</label> <input value=\"B\" type=\"radio\" name = \"r2\" id=\"radio2\"><br> <input type=\"radio\" name=\"r3\" id=\"radio3\" value=\"C\">Unit<br> <button id=\"submitunique\">submit</button></form> </div>');
+        var popUpList = $j('<form><input type=\"radio\" name=\"r1\" value=\"A\" id=\"radio1\" checked=\"checked\">Date<br><label for="radio2">Currency</label> <input value=\"B\" type=\"radio\" name = \"r2\" id=\"radio2\"><br> <input type=\"radio\" name=\"r3\" id=\"radio3\" value=\"C\">Unit<br> <button id=\"submitunique\">submit</button></form>');
         popUpList.dialog();
         $j("#submitunique").click(function(){
             console.log("submit clicked");
