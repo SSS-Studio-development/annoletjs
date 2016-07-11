@@ -281,33 +281,33 @@ function annolet_main() {
         annolet_createContainer();
   var popUpList = $j('<div><form><input type=\"radio\" name=\"r1\" value=\"A\" id=\"radio1\" checked=\"checked\">Date<br><label for="radio2">Currency</label> <input value=\"B\" type=\"radio\" name = \"r2\" id=\"radio2\"><br> <input type=\"radio\" name=\"r3\" id=\"radio3\" value=\"C\">Unit<br> <button id=\"submitunique\">submit</button></form></div>');
   popUpList.dialog();
-    document.onclick = function(event) {
-        console.log("mouse down hello");
-        event.preventDefault();
-        if (event === undefined) {
-            event = window.event;
-       } // for IE
-        var target = 'target' in event ? event.target : event.srcElement; // for IE
-        var root = document.compatMode === 'CSS1Compat' ? document.documentElement : document.body;
-        var xpath = anno_getXpathTo(target);
-        if (annolet_btn === 1) {
-            anno_highlight(xpath);
-        }
-        if(annolet_btn === 4){
-            anno_language(xpath);
-        }
-        else if (annolet_btn == 3){
-            anno_phonetic(xpath);
-        }
-        else if (annolet_btn===6){
-            anno_rtag(xpath);
-        }
-        else if (annolet_btn===9)
-        {
-            anno_audio(xpath);
-        }
-
-    };
+//    document.onclick = function(event) {
+//        console.log("mouse down hello");
+//        event.preventDefault();
+//        if (event === undefined) {
+//            event = window.event;
+//       } // for IE
+//        var target = 'target' in event ? event.target : event.srcElement; // for IE
+//        var root = document.compatMode === 'CSS1Compat' ? document.documentElement : document.body;
+//        var xpath = anno_getXpathTo(target);
+//        if (annolet_btn === 1) {
+//            anno_highlight(xpath);
+//        }
+//        if(annolet_btn === 4){
+//            anno_language(xpath);
+//        }
+//        else if (annolet_btn == 3){
+//            anno_phonetic(xpath);
+//        }
+//        else if (annolet_btn===6){
+//            anno_rtag(xpath);
+//        }
+//        else if (annolet_btn===9)
+//        {
+//            anno_audio(xpath);
+//        }
+//
+//    };
 
 }
 
