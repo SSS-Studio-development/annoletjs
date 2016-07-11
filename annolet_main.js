@@ -227,7 +227,7 @@ function anno_rtag(xpath)
         var popUpList = '<div><form><input type=\"radio\" name=\"r1\" value=\"A\" id=\"radio1\" checked=\"checked\">Date<br><label for="radio2">Currency</label> <input value=\"B\" type=\"radio\" name = \"r2\" id=\"radio2\"><br> <input type=\"radio\" name=\"r3\" id=\"radio3\" value=\"C\">Unit<br> <button id=\"submitunique\">submit</button></form></div>';
 //        popUpList.dialog();
         console.log(popUpList);
-        var raj = document.getElementByTagName('Body')[0];
+        var raj = document.getElementByTagName('body')[0];
         console.log(raj);
         document.getElementsByTagName('body')[0].append(popUpList);
         $j("#submitunique").click(function(){
