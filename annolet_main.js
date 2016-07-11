@@ -234,7 +234,6 @@ function anno_rtag(xpath)
         range.surroundContents(span);
         sel.removeAllRanges();
         sel.addRange(range);
-        disabled=false;
     }
 }  
 }
@@ -275,6 +274,7 @@ function annolet_main() {
     disableAllLinks()  // it will disable all the links present in webpage iteratively
         annolet_createContainer();
     document.onclick = function(event) {
+        console.log(disabled);
         if(disabled==true) return false;
         console.log("mouse down hello");
         event.preventDefault();
