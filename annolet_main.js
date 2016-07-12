@@ -45,7 +45,7 @@ function anno_getXpathTo(element) {
     for (var i = 0; i < siblings.length; i++) {
         var sibling = siblings[i];
         if (sibling === element) {
- n           return anno_getXpathTo(element.parentNode) + '/' + element.tagName.toLowerCase() + '[' + (ix + 1) + ']';
+            return anno_getXpathTo(element.parentNode) + '/' + element.tagName.toLowerCase() + '[' + (ix + 1) + ']';
         }
         if (sibling.nodeType === 1 && sibling.tagName === element.tagName) {
             ix++;
