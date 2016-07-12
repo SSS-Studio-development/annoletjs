@@ -206,7 +206,6 @@ function anno_language(xpath) {
 
 function anno_rtag(xpath)
 {
-
     if (!jQuery.ui)
     {
         console.log("for adding jquery ui");
@@ -219,29 +218,26 @@ function anno_rtag(xpath)
         document.getElementsByTagName('head')[0].appendChild(script);
         document.getElementsByTagName('head')[0].appendChild(link);
     }
-
+  
     var span = document.createElement("span");
     var prop = document.createAttribute("property");
     if (window.getSelection().toString().length!==0) {    
         console.log('highlighted');
-//        var div = document.createElement('div');
-//        div.innerHTML='<form><input type=\"radio\" name=\"r1\" value=\"A\" id=\"radio1\" checked=\"checked\">Date<br><label for="radio2">Currency</label> <input value=\"B\" type=\"radio\" name = \"r2\" id=\"radio2\"><br> <input type=\"radio\" name=\"r3\" id=\"radio3\" value=\"C\">Unit<br> <button id=\"submitunique\">submit</button></form>';
-        var popUpList = $j('<div><form><input type=\"radio\" name=\"r1\" value=\"A\" id=\"radio1\" checked=\"checked\">Date<br><label for="radio2">Currency</label> <input value=\"B\" type=\"radio\" name = \"r2\" id=\"radio2\"><br> <input type=\"radio\" name=\"r3\" id=\"radio3\" value=\"C\">Unit<br> <button id=\"submitunique\">submit</button></form></div>');
+        var popUpList = $j('<div><form><input type=\"radio\" name=\"r\" value=\"A\" id=\"radio\">Date<br> <input value=\"B\" type=\"radio\" name = \"r\" id=\"radio\">Currency<br> <input type=\"radio\" name=\"r\" id=\"radio\" value=\"C\">Unit<br> <button id=\"submitunique\">submit</button></form> </div>');
         popUpList.dialog();
-//        document.getElementsByTagName('body')[0].appendChild(div);
-//        $j("#submitunique").click(function(){
-//            console.log("submit clicked");
-//            alert($j("#radio:checked").val());});
-        prop.value=prompt('Enter the tag name you want to give');
-        span.setAttributeNode(prop);
-        var sel = window.getSelection();
-        if (sel.rangeCount) {
-            var range = sel.getRangeAt(0).cloneRange();
-            range.surroundContents(span);
-            sel.removeAllRanges();
-            sel.addRange(range);
-        }
-    }  
+        $j("#submitunique").click(function(){
+            console.log("submit clicked");
+            alert($j("#radio:checked").val());});
+        prop.value=$j('#radio.checked').val();
+    span.setAttributeNode(prop);
+    var sel = window.getSelection();
+    if (sel.rangeCount) {
+        var range = sel.getRangeAt(0).cloneRange();
+        range.surroundContents(span);
+        sel.removeAllRanges();
+        sel.addRange(range);
+    }
+}  
 }
 
 
@@ -278,53 +274,34 @@ function anno_audio(xpath)
 //main function which will execute other functions
 function annolet_main() {
     disableAllLinks()  // it will disable all the links present in webpage iteratively
+        annolet_createContainer();
+    document.onclick = function(event) {
+        console.log("mouse down hello");
+        event.preventDefault();
+        if (event === undefined) {
+            event = window.event;
+        } // for IE
+        var target = 'target' in event ? event.target : event.srcElement; // for IE
+        var root = document.compatMode === 'CSS1Compat' ? document.documentElement : document.body;
+        var xpath = anno_getXpathTo(target);
+        if (annolet_btn === 1) {
+            anno_highlight(xpath);
+        }
+        if(annolet_btn === 4){
+            anno_language(xpath);
+        }
+        else if (annolet_btn == 3){
+            anno_phonetic(xpath);
+        }
+        else if (annolet_btn===6){
+            anno_rtag(xpath);
+        }
+        else if (annolet_btn===9)
+        {
+            anno_audio(xpath);
+        }
 
-    if (!jQuery.ui)
-    {
-        console.log("for adding jquery ui");
-        var script=document.createElement('script');
-        var link=document.createElement('link');
-
-        script.src='//code.jquery.com/ui/1.11.4/jquery-ui.min.js';
-        link.rel="stylesheet";
-        link.href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css";
-        document.getElementsByTagName('head')[0].appendChild(script);
-        document.getElementsByTagName('head')[0].appendChild(link);
-    }
-
-  var popUpList = $j('<div><form><input type=\"radio\" name=\"r1\" value=\"A\" id=\"radio1\" checked=\"checked\">Date<br><label for="radio2">Currency</label> <input value=\"B\" type=\"radio\" name = \"r2\" id=\"radio2\"><br> <input type=\"radio\" name=\"r3\" id=\"radio3\" value=\"C\">Unit<br> <button id=\"submitunique\">submit</button></form> </div>');
-  console.log(popUpList);
-  popUpList.dialog();
-  popUpList.dialog();
-  popUpList.dialog();
-  popUpList.dialog();
-//    document.onclick = function(event) {
-//        console.log("mouse down hello");
-//        event.preventDefault();
-//        if (event === undefined) {
-//            event = window.event;
-//       } // for IE
-//        var target = 'target' in event ? event.target : event.srcElement; // for IE
-//        var root = document.compatMode === 'CSS1Compat' ? document.documentElement : document.body;
-//        var xpath = anno_getXpathTo(target);
-//        if (annolet_btn === 1) {
-//            anno_highlight(xpath);
-//        }
-//        if(annolet_btn === 4){
-//            anno_language(xpath);
-//        }
-//        else if (annolet_btn == 3){
-//            anno_phonetic(xpath);
-//        }
-//        else if (annolet_btn===6){
-//            anno_rtag(xpath);
-//        }
-//        else if (annolet_btn===9)
-//        {
-//            anno_audio(xpath);
-//        }
-//
-//    };
+    };
 
 }
 
