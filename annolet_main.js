@@ -188,6 +188,12 @@ function anno_edit(xpath)
     document.getElementsByTagName("body")[0].setAttribute('contenteditable','true');
 }
 
+function anno_remove_edit(xpath)
+{
+    document.getElementsByTagName("body")[0].removeAttribute('contenteditable');
+}
+
+
 //------------------------------------------------------------------------
 
 
@@ -214,6 +220,9 @@ function annolet_main() {
         }
         else if (annolet_btn == 5){
           anno_edit(xpath);
+        }
+        else if (annolet_btn==0){
+            anno_remove_edit(xpath);
         }
     };
 }
