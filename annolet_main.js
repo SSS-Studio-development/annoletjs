@@ -27,6 +27,7 @@ function annolet_createContainer() {
     /*"<li id='annolet' class=annolet-tools-menu-item id=highlight-btn onclick='annolet_btn=2;'>Highlight</li>"+*/
     "<li id='annolet' class=annolet-tools-menu-item id=highlight-btn onclick='annolet_btn=3;'>Phonetics</li>"+
     "<li id='annolet' class=annolet-tools-menu-item id=highlight-btn onclick='annolet_btn=4;'>Translation</li>"+
+    "<li id='annolet' class=annolet-tools-menu-item id=highlight-btn onclick='annolet_btn=5;'>Edit</li>"+
     "<li id='annolet' class=annolet-tools-menu-item id=exit-btn onclick='annolet_btn=0;'>exit</li>"+
     "</ul>"; //HTML to create a list of options
 }
@@ -44,7 +45,7 @@ function anno_getXpathTo(element) {
     for (var i = 0; i < siblings.length; i++) {
         var sibling = siblings[i];
         if (sibling === element) {
-            return anno_getXpathTo(element.parentNode) + '/' + element.tagName.toLowerCase() + '[' + (ix + 1) + ']';
+ n           return anno_getXpathTo(element.parentNode) + '/' + element.tagName.toLowerCase() + '[' + (ix + 1) + ']';
         }
         if (sibling.nodeType === 1 && sibling.tagName === element.tagName) {
             ix++;
@@ -181,6 +182,12 @@ function anno_language(xpath) {
   }
 }
 
+
+function anno_edit(xpath)
+{
+    document.getElementsByTagName("body")[0].setAttribute('contenteditable','true');
+}
+
 //------------------------------------------------------------------------
 
 
@@ -204,6 +211,9 @@ function annolet_main() {
         }
         else if (annolet_btn == 3){
           anno_phonetic(xpath);
+        }
+        else if (annolet_btn == 5){
+          anno_edit(xpath);
         }
     };
 }
