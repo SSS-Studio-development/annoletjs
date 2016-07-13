@@ -29,6 +29,7 @@ function annolet_createContainer() {
         "<li id='annolet' class=annolet-tools-menu-item id=highlight-btn onclick='annolet_btn=4;'>Translation</li>"+
         "<li id='annolet' class=annolet-tools-menu-item id=rtag-btn onclick='annolet_btn=6;'>rtag</li>"+
         "<li id='annolet' class=annolet-tools-menu-item id=audio-btn onclick='annolet_btn=9;'>audio</li>"+
+        "<li id='annolet' class=annolet-tools-menu-item id=audio-btn onclick='annolet_btn=10;'>edit</li>"+
         "<li id='annolet' class=annolet-tools-menu-item id=exit-btn onclick='annolet_btn=0;'>exit</li>"+
         "</ul>"; //HTML to create a list of options
 }
@@ -267,6 +268,18 @@ function anno_audio(xpath)
     }
 }
 
+
+function anno_edit(xpath)
+{
+        document.getElementsByTagName("body")[0].setAttribute('contenteditable','true');
+}
+
+function anno_remove_edit(xpath)
+{
+        document.getElementsByTagName("body")[0].removeAttribute('contenteditable');
+}
+
+
 //------------------------------------------------------------------------
 
 
@@ -299,6 +312,14 @@ function annolet_main() {
         else if (annolet_btn===9)
         {
             anno_audio(xpath);
+        }
+        else if (annolet_btn===10)
+        {
+             anno_edit(xpath);
+        }
+        else if (annolet_btn===0)
+        {
+             anno_remove_edit(xpath);
         }
 
     };
