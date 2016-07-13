@@ -109,28 +109,6 @@ function get_languagetrans(str,fr,to){
 
 }
 
-function get_rtag(str)
-{
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "//localhost:5000/rtag", true); // replace localhost afterwards
-    xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-    xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
-    xhr.send(JSON.stringify({"sentence":str}));
-
-    xhr.onreadystatechange = processRequest;
-
-    function processRequest(e)
-    {
-        if (xhr.readyState == 4)
-        {
-            console.log('r tag set');
-            rtag_text = xhr.responseText;
-        }
-    }
-
-}
-
-
 //function for getting phonetic
 function anno_phonetic(xpath) {
     var clicked_element = anno_getElementByXpath(xpath);
@@ -205,41 +183,6 @@ function anno_language(xpath) {
     }
 }
 
-function anno_rtag(xpath)
-{
-    if (!jQuery.ui)
-    {
-        console.log("for adding jquery ui");
-        var script=document.createElement('script');
-        var link=document.createElement('link');
-
-        script.src='//code.jquery.com/ui/1.11.4/jquery-ui.min.js';
-        link.rel="stylesheet";
-        link.href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css";
-        document.getElementsByTagName('head')[0].appendChild(script);
-        document.getElementsByTagName('head')[0].appendChild(link);
-    }
-  
-    var span = document.createElement("span");
-    var prop = document.createAttribute("property");
-    if (window.getSelection().toString().length!==0) {    
-        console.log('highlighted');
-        var popUpList = $j('<div><form><input type=\"radio\" name=\"r\" value=\"A\" id=\"radio\">Date<br> <input value=\"B\" type=\"radio\" name = \"r\" id=\"radio\">Currency<br> <input type=\"radio\" name=\"r\" id=\"radio\" value=\"C\">Unit<br> <button id=\"submitunique\">submit</button></form> </div>');
-        popUpList.dialog();
-        $j("#submitunique").click(function(){
-            console.log("submit clicked");
-            alert($j("#radio:checked").val());});
-        prop.value=$j('#radio.checked').val();
-    span.setAttributeNode(prop);
-    var sel = window.getSelection();
-    if (sel.rangeCount) {
-        var range = sel.getRangeAt(0).cloneRange();
-        range.surroundContents(span);
-        sel.removeAllRanges();
-        sel.addRange(range);
-    }
-}  
-}
 
 
 function anno_audio(xpath)
@@ -276,14 +219,26 @@ function anno_edit(xpath)
 
 function anno_remove_edit(xpath)
 {
-        document.getElementsByTagName("body")[0].removeAttribute('contenteditable');
+  document.getElementsByTagName("body")[0].removeAttribute('contenteditable');
+  document.getElementById("page-wrap").setAttribute("hidden","");
 }
 
-function add_tagging_menu()
+function add_tagging()
 {
-  $j("body").append(' <div id=\"page-wrap\" hidden> <ul class=\"annolet_dropdown\"> <li><a href=\"#\" >Event</a> <ul class=\"sub_menu\"> <li> <a href=\"#\" onclick=\"func_tagging(\'event-name\')\">Name</a> </li> <li> <a href=\"#\">Date</a> <ul> <li><a href=\"#\" onclick=\"func_tagging(\'event-date-startdate\')\" >Start date</a></li> <li><a href=\"#\" onclick=\"func_tagging(\'event-date-enddate\')\">End date</a></li> </ul> </li> <li> <a href=\"#\">Location</a> <ul> <li><a href=\"#\" onclick=\"func_tagging(\'event-location-street\')\" >Street</a></li> <li><a href=\"#\" onclick=\"func_tagging(\'event-location-area\')\">Area</a></li> <li><a href=\"#\" onclick=\"func_tagging(\'event-location-city\')\">City</a></li> </ul> </li> </ul> </li> <li><a href=\"#\" >Organization</a> <ul class=\"sub_menu\"> <li> <a href=\"#\" onclick=\"func_tagging(\'organization-owner\')\">Owner</a> </li> <li> <a href=\"#\" onclick=\"func_tagging(\'organization-employee\')\" >Employee</a> </li> <li> <a href=\"#\" onclick=\"func_tagging(\'organization-contact\')\">Contact</a> </li> <li> <a href=\"#\">Location</a> <ul> <li><a href=\"#\" onclick=\"func_tagging(\'organization-location-street\')\">Street</a></li> <li><a href=\"#\" onclick=\"func_tagging(\'organization-location-area\')\">Area</a></li> <li><a href=\"#\" onclick=\"func_tagging(\'organization-location-city\')\">City</a></li> </ul> </li> </ul> </li> <li><a href=\"#\" >Person</a> <ul class=\"sub_menu\"> <li> <a href=\"#\">Name</a> <ul> <li><a href=\"#\" onclick=\"func_tagging(\'person-name-firstname\')\" >First Name</a></li> <li><a href=\"#\" onclick=\"func_tagging(\'person-name-secondname\')\">Second Name</a></li> </ul> </li> <li> <a href=\"#\">Address</a> <ul> <li><a href=\"#\" onclick=\"func_tagging(\'person-address-street\')\">Street</a></li> <li><a href=\"#\" onclick=\"func_tagging(\'person-address-area\')\">Area</a></li> <li><a href=\"#\" onclick=\"func_tagging(\'person-address-city\')\">City</a></li> </ul> </li> <li> <a href=\"#\" onclick=\"func_tagging(\'person-contact\')\">Contact</a> </li> </ul> </li> <li><a href=\"#\" >Date</a> <ul class=\"sub_menu\"> <li> <a href=\"#\" onclick=\"func_tagging(\'date-startdate\')\">Start date</a> </li> <li> <a href=\"#\" onclick=\"func_tagging(\'person-enddate\')\">End date</a> </li> </ul> </li> <li><a href=\"#\" >Currency</a> <ul class=\"sub_menu\"> <li> <a href=\"#\" onclick=\"func_tagging(\'currency-rupee\')\">Rupee</a> </li> <li> <a href=\"#\" onclick=\"func_tagging(\'currency-dollar\')\">Dollar</a> </li> <li> <a href=\"#\" onclick=\"func_tagging(\'currency-euro\')\">Euro</a> </li> </ul> </li> <li><a href=\"#\" >Unit</a> <ul class=\"sub_menu\"> <li> <a href=\"#\" onclick=\"func_tagging(\'unit-si\')\">SI</a> </li> <li> <a href=\"#\" onclick=\"func_tagging(\'unit-cgi\')\">CGI</a> </li> <li> <a href=\"#\" onclick=\"func_tagging(\'unit-fps\')\">FPS</a> </li> </ul> </li> </ul> </div> ');
+    $j("body").append(' <div id=\"page-wrap\" hidden> <ul class=\"annolet_dropdown\"> <li><a href=\"#\" >Event</a> <ul class=\"sub_menu\"> <li> <a href=\"#\" onclick=\"func_tagging(\'event-name\')\">Name</a> </li> <li> <a href=\"#\">Date</a> <ul> <li><a href=\"#\" onclick=\"func_tagging(\'event-date-startdate\')\" >Start date</a></li> <li><a href=\"#\" onclick=\"func_tagging(\'event-date-enddate\')\">End date</a></li> </ul> </li> <li> <a href=\"#\">Location</a> <ul> <li><a href=\"#\" onclick=\"func_tagging(\'event-location-street\')\" >Street</a></li> <li><a href=\"#\" onclick=\"func_tagging(\'event-location-area\')\">Area</a></li> <li><a href=\"#\" onclick=\"func_tagging(\'event-location-city\')\">City</a></li> </ul> </li> </ul> </li> <li><a href=\"#\" >Organization</a> <ul class=\"sub_menu\"> <li> <a href=\"#\" onclick=\"func_tagging(\'organization-owner\')\">Owner</a> </li> <li> <a href=\"#\" onclick=\"func_tagging(\'organization-employee\')\" >Employee</a> </li> <li> <a href=\"#\" onclick=\"func_tagging(\'organization-contact\')\">Contact</a> </li> <li> <a href=\"#\">Location</a> <ul> <li><a href=\"#\" onclick=\"func_tagging(\'organization-location-street\')\">Street</a></li> <li><a href=\"#\" onclick=\"func_tagging(\'organization-location-area\')\">Area</a></li> <li><a href=\"#\" onclick=\"func_tagging(\'organization-location-city\')\">City</a></li> </ul> </li> </ul> </li> <li><a href=\"#\" >Person</a> <ul class=\"sub_menu\"> <li> <a href=\"#\">Name</a> <ul> <li><a href=\"#\" onclick=\"func_tagging(\'person-name-firstname\')\" >First Name</a></li> <li><a href=\"#\" onclick=\"func_tagging(\'person-name-secondname\')\">Second Name</a></li> </ul> </li> <li> <a href=\"#\">Address</a> <ul> <li><a href=\"#\" onclick=\"func_tagging(\'person-address-street\')\">Street</a></li> <li><a href=\"#\" onclick=\"func_tagging(\'person-address-area\')\">Area</a></li> <li><a href=\"#\" onclick=\"func_tagging(\'person-address-city\')\">City</a></li> </ul> </li> <li> <a href=\"#\" onclick=\"func_tagging(\'person-contact\')\">Contact</a> </li> </ul> </li> <li><a href=\"#\" >Date</a> <ul class=\"sub_menu\"> <li> <a href=\"#\" onclick=\"func_tagging(\'date-startdate\')\">Start date</a> </li> <li> <a href=\"#\" onclick=\"func_tagging(\'person-enddate\')\">End date</a> </li> </ul> </li> <li><a href=\"#\" >Currency</a> <ul class=\"sub_menu\"> <li> <a href=\"#\" onclick=\"func_tagging(\'currency-rupee\')\">Rupee</a> </li> <li> <a href=\"#\" onclick=\"func_tagging(\'currency-dollar\')\">Dollar</a> </li> <li> <a href=\"#\" onclick=\"func_tagging(\'currency-euro\')\">Euro</a> </li> </ul> </li> <li><a href=\"#\" >Unit</a> <ul class=\"sub_menu\"> <li> <a href=\"#\" onclick=\"func_tagging(\'unit-si\')\">SI</a> </li> <li> <a href=\"#\" onclick=\"func_tagging(\'unit-cgi\')\">CGI</a> </li> <li> <a href=\"#\" onclick=\"func_tagging(\'unit-fps\')\">FPS</a> </li> </ul> </li> </ul> </div> ');
+
+  $j("head").append('<script src="//rawgit.com/SSS-Studio-development/tagging/master/js/tagging.js">    </script>');
+
+  $j("head").append('<link rel="stylesheet" href="//rawgit.com/SSS-Studio-development/tagging/master/css/style.css" type="text/css" media="screen, projection"/>');
+  
+ 
 }
 
+
+function anno_rtag(xpath)
+{
+  document.getElementById("page-wrap").removeAttribute("hidden");
+}
 
 //------------------------------------------------------------------------
 
@@ -293,7 +248,7 @@ function add_tagging_menu()
 function annolet_main() {
     disableAllLinks()  // it will disable all the links present in webpage iteratively
     annolet_createContainer();
-    add_tagging_menu();
+    add_tagging();
     document.onclick = function(event) {
         console.log("mouse down hello");
         event.preventDefault();
@@ -313,7 +268,7 @@ function annolet_main() {
             anno_phonetic(xpath);
         }
         else if (annolet_btn===6){
-            anno_rtag(xpath);
+          anno_rtag(xpath);
         }
         else if (annolet_btn===9)
         {
