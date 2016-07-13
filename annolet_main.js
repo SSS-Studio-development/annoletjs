@@ -237,6 +237,8 @@ function add_tagging()
 
 function anno_rtag(xpath)
 {
+
+  console.log("remove hidden");
   document.getElementById("page-wrap").removeAttribute("hidden");
 }
 
